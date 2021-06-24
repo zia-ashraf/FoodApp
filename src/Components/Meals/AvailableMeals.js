@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./AvailableMeals.Module.css";
+import Card from "../UI/Card";
 import MealItem from "./MealItem/MealItem";
 const DUMMY_MEALS = [
   {
@@ -33,7 +34,7 @@ const AvailableMeals = () => {
     <li>
       {console.log(meal.name)}
       <MealItem
-        key={Math.random}
+        key={meal.id}
         name={meal.name}
         description={meal.description}
         price={meal.price}
@@ -42,7 +43,9 @@ const AvailableMeals = () => {
   ));
   return (
     <section className={classes.meals}>
-      <ul>{mealsList}</ul>
+      <Card>
+        <ul>{mealsList}</ul>
+      </Card>
     </section>
   );
 };
