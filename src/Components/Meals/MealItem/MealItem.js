@@ -10,15 +10,16 @@ const MealItem = (props) => {
   const ctx = useContext(CartContext);
 
   const addToCartHandler = (amount) => {
-    console.log("add to cart handler works");
+    // console.log("add to cart handler works");
     ctx.addItem({
+      // key: Math.random(),
       id: props.id,
       name: props.name,
       amount: amount,
       price: props.price,
     });
-    console.log(props.name + " " + amount);
-    console.log(ctx.items + " we are inside mealItem");
+    // console.log(props.name + " " + amount);
+    // console.log(ctx.items + " we are inside mealItem");
   };
 
   // console.log("we are inside the mealsitem component");
