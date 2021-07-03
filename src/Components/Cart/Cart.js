@@ -14,10 +14,11 @@ const Cart = (props) => {
       ...item,
       amount: 1,
     });
-    console.log("the item triggered-", item);
+    // console.log("the item triggered-", item);
   };
   const removeItemHandler = (id) => {
-    ctx.removeItem();
+    console.log("came inside remove item handler in cart", id);
+    ctx.removeItem(id);
   };
   // console.log("the total items in the cart-", ctx.items.length);
   const CartItems = ctx.items.map((item) => (
