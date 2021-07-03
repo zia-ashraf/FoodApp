@@ -29,7 +29,7 @@ const DUMMY_MEALS = [
   },
 ];
 const AvailableMeals = () => {
-  console.log("we are inside the Available meals component");
+  // console.log("we are inside the Available meals component");
   const mealsList = DUMMY_MEALS.map((meal) => (
     <li>
       {console.log(meal.name)}

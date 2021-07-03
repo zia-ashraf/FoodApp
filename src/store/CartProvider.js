@@ -8,10 +8,26 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
-    const updatedItems = state.items.concat(action.item);
-    console.log(action.item.amount + "action item here");
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
+
+    const existingCartItemIndex = state.items.findIndex(
+      (item) => item.id === action.item.id
+    );
+    const existingCartItem = state.items[existingCartItemIndex];
+    let updatedItems;
+    if (existingCartItem) {
+      //if the item is present already
+      const updatedItem = {
+        ...existingCartItem,
+        amount: existingCartItem.amount + action.item.amount,
+      }; //changing the amount field of that particular item
+      updatedItems = [...state.items];
+      updatedItems[existingCartItemIndex] = updatedItem;
+    } else {
+      updatedItems = state.items.concat(action.item);
+    }
+    // console.log(action.item.amount + "action item here");
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
@@ -27,7 +43,7 @@ const CartProvider = (props) => {
   );
 
   const AddItemToCartHandler = (item) => {
-    console.log(item);
+    // console.log(item);
     dispatchCartAction({ type: "ADD", item: item });
   };
 
