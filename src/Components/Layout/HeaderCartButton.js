@@ -17,9 +17,13 @@ const HeaderCartButton = (props) => {
   useEffect(() => {
     // console.log("we are inside the useEffect hook");
     setbuttonIsHighlighted(true);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setbuttonIsHighlighted(false);
     }, 300);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [ctx.items]);
 
   const btnClasses = `${classes.button} ${
@@ -28,7 +32,7 @@ const HeaderCartButton = (props) => {
   return (
     <button className={btnClasses} onClick={props.onClick}>
       <span className={classes.icon}>
-        <CartIcon />
+        <CartIcon />  
       </span>
       <span>My Cart</span>
       <span className={classes.badge}>{numberOfCartItems}</span>
